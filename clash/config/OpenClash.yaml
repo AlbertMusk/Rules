@@ -139,8 +139,8 @@ rule-anchor:
   class: &class {type: http, interval: 86400, behavior: classical, format: text}
 rule-providers: 
   private_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
-  my-direct: {!!merge <<: *class, url: "https://raw.githubusercontent.com/zhouxuanbo1990/MyRule/refs/heads/main/clash/Direct.list" }
-  my-proxy: {!!merge <<: *class, url: "https://raw.githubusercontent.com/zhouxuanbo1990/MyRule/refs/heads/main/clash/ProxyLite.list" }
+  my-direct: {!!merge <<: *class, url: "https://raw.githubusercontent.com/AlbertMusk/Rules/refs/heads/main/clash/Direct.list" }
+  my-proxy: {!!merge <<: *class, url: "https://raw.githubusercontent.com/AlbertMusk/Rules/refs/heads/main/clash/ProxyLite.list" }
   my-ai: {!!merge <<: *class, url: "https://raw.githubusercontent.com/zhouxuanbo1990/MyRule/refs/heads/main/clash/AI.list" }
   openai_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.mrs" }  
   youtube_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
