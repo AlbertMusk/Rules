@@ -108,9 +108,8 @@
     ],
     
     "rule_set": [
-      { "tag": "my-direct", "type": "remote", "format": "source", "url": "https://raw.githubusercontent.com/zhouxuanbo1990/MyRule/refs/heads/main/singbox/Direct.json", "download_detour": "🚀 节点选择" },
-      { "tag": "my-ai", "type": "remote", "format": "source", "url": "https://raw.githubusercontent.com/zhouxuanbo1990/MyRule/refs/heads/main/singbox/AI.json", "download_detour": "🚀 节点选择" },
-      { "tag": "my-proxy", "type": "remote", "format": "source", "url": "https://raw.githubusercontent.com/zhouxuanbo1990/MyRule/refs/heads/main/singbox/ProxyLite.json", "download_detour": "🚀 节点选择" },
+      { "tag": "my-direct", "type": "remote", "format": "source", "url": "https://raw.githubusercontent.com/AlbertMusk/Rules/refs/heads/main/singbox/Direct.json", "download_detour": "🚀 节点选择" },
+      { "tag": "my-proxy", "type": "remote", "format": "source", "url": "https://raw.githubusercontent.com/AlbertMusk/Rules/refs/heads/main/singbox/Direct.json", "download_detour": "🚀 节点选择" },
       { "tag": "geosite-chat", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ai-chat-!cn.srs", "download_detour": "🚀 节点选择" },
       { "tag": "geosite-youtube", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/youtube.srs", "download_detour": "🚀 节点选择" },
       { "tag": "geosite-google", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google.srs", "download_detour": "🚀 节点选择" },
