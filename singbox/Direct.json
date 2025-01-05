@@ -5,6 +5,11 @@
       "domain_suffix": [
         "hdfans.org"
       ]
+    },
+    {
+      "domain_keyword": [
+        "tracker"
+      ]
     }
   ]
 }
