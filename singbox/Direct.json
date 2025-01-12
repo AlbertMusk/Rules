@@ -3,7 +3,9 @@
   "rules": [   
     {
       "domain_suffix": [
-        "hdfans.org"
+        "hdfans.org",
+        "m-team.cc",
+        "m-team.io"
       ]
     },
     {
