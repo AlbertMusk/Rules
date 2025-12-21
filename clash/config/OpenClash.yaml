@@ -1,5 +1,5 @@
 proxy-providers:
-  Airport_01:
+  QQ:
     type: http
     interval: 1800
     health-check:
@@ -7,14 +7,14 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 300
     proxy: 🟢 直连
-    url: 机场链接
+    url: 链接
 global-ua: clash.meta
 port: 7890
 socks-port: 7891
 redir-port: 7892
 mixed-port: 7893
 tproxy-port: 7895
-ipv6: false
+ipv6: true
 allow-lan: true
 unified-delay: true
 tcp-concurrent: true
@@ -95,18 +95,25 @@ proxies:
   udp: true
  
 # 锚点
-pr: &pr {type: select, proxies: [🚀 节点选择, 🇭🇰 香港自动, 🇯🇵 日本自动, 🇺🇲 美国自动, ♻️ 自动选择, 🐸 手动选择, 🟢 直连]}
+pr: &pr {type: select, proxies: [🚀 节点选择, 🇭🇰 香港自动, 🇯🇵 日本自动, 🇺🇲 美国自动, ♻️ 自动选择, 🐸 手动选择, 🇰🇷 韩国自动, 🟢 直连, 🇹🇼 台湾自动]}
 # 策略组
 proxy-groups:
-  - {name: 🚀 节点选择, type: select, proxies: [♻️ 自动选择, 🇭🇰 香港自动, 🇯🇵 日本自动, 🇺🇲 美国自动, 🐸 手动选择, 🟢 直连]}
+  - {name: 🚀 节点选择, type: select, proxies: [♻️ 自动选择, 🇭🇰 香港自动, 🇯🇵 日本自动, 🇺🇲 美国自动, 🇹🇼 台湾自动, 🇭🇰 香港倍率, 🇯🇵 日本倍率, 🇺🇲 美国倍率, ❓ 其他节点, 🐸 手动选择, 🟢 直连]}
   - {name: ♻️ 自动选择, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$"}
   - {name: 🐸 手动选择, type: select, include-all: true, filter: "^((?!(直连)).)*$"}
   - {name: 🇭🇰 香港自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(香港|港|🇭🇰|(?i)hk|(?i)hong))"}
+  - {name: 🇭🇰 香港倍率, type: select, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(香港|港|🇭🇰|(?i)hk|(?i)hong)(?=.*倍率))"}
+  - {name: 🇹🇼 台湾自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(台湾|湾|🇹🇼|Taiwan|TW))"}
   - {name: 🇯🇵 日本自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日本|日|东京|🇯🇵|(?i)jp|(?i)japan))" }
+  - {name: 🇯🇵 日本倍率, type: select, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日本|日|东京|🇯🇵|(?i)jp|(?i)japan)(?=.*倍率))" }
   - {name: 🇰🇷 韩国自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(韩国|韩|🇰🇷|(?i)kr|(?i)korea))"}
   - {name: 🇺🇲 美国自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(美国|美|凤凰城|🇺🇲|(?i)us|(?i)states|(?i)america))"}
+  - {name: 🇺🇲 美国倍率, type: select, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(美国|美|凤凰城|🇺🇲|(?i)us|(?i)states|(?i)america)(?=.*倍率))"}
+  - {name: ❓ 其他节点, type: select, include-all: true, tolerance: 20, interval: 300, filter: "^(?!.*(香港|港|🇭🇰|hk|hong|台湾|湾|🇹🇼|taiwan|tw|日本|日|东京|🇯🇵|jp|japan|韩国|韩|🇰🇷|kr|korea|美国|美|凤凰城|🇺🇲|us|states|america|剩余|套餐|官网|建议|直连)).*"}
   - {name: 🤖 ChatGPT, type: select, proxies: [🇯🇵 日本自动, 🇰🇷 韩国自动, 🇺🇲 美国自动]}
-  - {name: 🎵 TikTok, type: select, proxies: [🇯🇵 日本自动, 🇰🇷 韩国自动, 🇺🇲 美国自动]}
+  - {name: 🎵 TikTok, type: select, proxies: [🇯🇵 日本自动, 🇰🇷 韩国自动, 🇺🇲 美国自动, 🇺🇲 美国倍率, 🇯🇵 日本倍率, 🇭🇰 香港倍率]}
+  - {name: ▶️ YouTube, type: select, proxies: [🇯🇵 日本自动, 🇰🇷 韩国自动, 🇺🇲 美国自动, 🇺🇲 美国倍率, 🇯🇵 日本倍率, 🇭🇰 香港倍率]}
+  - {name: 🅾 Instagram, type: select, proxies: [🇯🇵 日本自动, 🇰🇷 韩国自动, 🇺🇲 美国自动, 🇺🇲 美国倍率, 🇯🇵 日本倍率, 🇭🇰 香港倍率]}
   - {name: 🪟 Microsoft, type: select, proxies: [🇺🇲 美国自动, 🇯🇵 日本自动, 🇰🇷 韩国自动, 🟢 直连]}
   - {name: 🍏 Apple, type: select, proxies: [🟢 直连, 🚀 节点选择]}
   - {name: 🐠 漏网之鱼, type: select, proxies: [🟢 直连, 🚀 节点选择]} 
@@ -114,16 +121,18 @@ proxy-groups:
 
 rules:
   - RULE-SET,private_domain,🟢 直连
+  - RULE-SET,my-tw-proxy,🇹🇼 台湾自动
   - RULE-SET,my-direct,🟢 直连
   - RULE-SET,my-proxy,🚀 节点选择
-  - RULE-SET,my-ai,🤖 ChatGPT  
+  - RULE-SET,adblock,REJECT
   - RULE-SET,openai_domain,🤖 ChatGPT
   - RULE-SET,tiktok_domain,🎵 TikTok
-  - RULE-SET,youtube_domain,🚀 节点选择
+  - RULE-SET,youtube_domain,▶️ YouTube
   - RULE-SET,google_domain,🚀 节点选择
   - RULE-SET,github_domain,🚀 节点选择
   - RULE-SET,telegram_domain,🚀 节点选择
   - RULE-SET,microsoft_domain,🪟 Microsoft
+  - RULE-SET,instagram_domain,🅾 Instagram
   - RULE-SET,apple_domain,🍏 Apple    
   - RULE-SET,geolocation-!cn,🚀 节点选择
   - RULE-SET,cn_domain,🟢 直连
@@ -141,11 +150,11 @@ rule-providers:
   private_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
   my-direct: {!!merge <<: *class, url: "https://raw.githubusercontent.com/AlbertMusk/Rules/refs/heads/main/clash/Direct.list" }
   my-proxy: {!!merge <<: *class, url: "https://raw.githubusercontent.com/AlbertMusk/Rules/refs/heads/main/clash/ProxyLite.list" }
-  my-ai: {!!merge <<: *class, url: "https://raw.githubusercontent.com/zhouxuanbo1990/MyRule/refs/heads/main/clash/AI.list" }
+  my-tw-proxy: {!!merge <<: *class, url: "https://raw.githubusercontent.com/AlbertMusk/Rules/refs/heads/main/clash/TWProxyList" }
+  adblock: {!!merge <<: *class, url: "https://raw.githubusercontent.com/REIJI007/AdBlock_Rule_For_Clash/main/adblock_reject.mrs" }
   openai_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.mrs" }  
   youtube_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
   google_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"}
-  github_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"}
   telegram_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs"}
   microsoft_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs"}
   apple_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple-cn.mrs"}
@@ -156,3 +165,5 @@ rule-providers:
   cn_ip: {!!merge <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"}
   google_ip: {!!merge <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs"}
   telegram_ip: {!!merge <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs"}
+  instagram_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/instagram.mrs"}
+  github_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/github.mrs"}
