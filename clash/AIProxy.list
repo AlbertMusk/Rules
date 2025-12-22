@@ -16,8 +16,6 @@ DOMAIN-SUFFIX,grok.com
 DOMAIN-SUFFIX,x.ai
 DOMAIN-SUFFIX,grok.x.ai
 DOMAIN-SUFFIX,api.x.ai
-DOMAIN-SUFFIX,x.com
-DOMAIN-SUFFIX,twitter.com
 
 # 苹果服务相关
 DOMAIN,apple-relay.apple.com
