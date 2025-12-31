@@ -1,5 +1,5 @@
 proxy-providers:
-  QQ:
+  proxy:
     type: http
     interval: 1800
     health-check:
@@ -7,7 +7,7 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 300
     proxy: 🟢 直连
-    url: 链接
+    url: 
 global-ua: clash.meta
 port: 7890
 socks-port: 7891
@@ -94,12 +94,12 @@ dns:
 
   nameserver-policy:
     # 本地 / 国内
-    rule-set:private_domain,cn_domain:
+    rule-set:private_domain,cn_domain,my-direct:
       - 223.5.5.5
       - 219.147.1.66
 
     # AI / 海外 / 社交 / CDN
-    rule-set:openai_domain,geolocation-!cn:
+    rule-set:openai_domain,geolocation-!cn,telegram_domain,tiktok_domain,youtube_domain,google_domain,github_domain,cloudflare_domain,fastly_domain:
       - https://dns.cloudflare.com/dns-query
       - https://dns.google/dns-query
   
@@ -114,24 +114,28 @@ pr: &pr {type: select, proxies: [🚀 节点选择, 🇭🇰 香港自动, 🇯�
 proxy-groups:
   - {name: 🚀 节点选择, type: select, proxies: [♻️ 自动选择, 🇭🇰 香港自动, 🇯🇵 日本自动, 🇺🇲 美国自动, 🇹🇼 台湾自动, 🇭🇰 香港倍率, 🇯🇵 日本倍率, 🇺🇲 美国倍率, ❓ 其他节点, 🐸 手动选择, 🟢 直连]}
   - {name: ♻️ 自动选择, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(直连|剩余|套餐|官网|建议)).)*$"}
-  - {name: 🐸 手动选择, type: select, include-all: true, filter: "^((?!(直连)).)*$"}
+  - {name: 🐸 手动选择, type: select, include-all: true, filter: "^((?!(直连|剩余|套餐|官网|建议)).)*$"}
   - {name: 🇭🇰 香港自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(香港|港|🇭🇰|(?i)hk|(?i)hong))"}
-  - {name: 🇭🇰 香港倍率, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(香港|港|🇭🇰|(?i)hk|(?i)hong)(?=.*倍率))"}
+  - {name: 🇭🇰 香港倍率, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(香港|港|🇭🇰).*0.0?1"}
   - {name: 🇹🇼 台湾自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(台湾|湾|🇹🇼|Taiwan|TW))"}
   - {name: 🇯🇵 日本自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日本|日|东京|🇯🇵|(?i)jp|(?i)japan))" }
-  - {name: 🇯🇵 日本倍率, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日本|日|东京|🇯🇵|(?i)jp|(?i)japan)(?=.*倍率))" }
+  - {name: 🇯🇵 日本倍率, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(日本|日|东京|🇯🇵).*0.0?1" }
   - {name: 🇰🇷 韩国自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(韩国|韩|🇰🇷|(?i)kr|(?i)korea))"}
   - {name: 🇺🇲 美国自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(美国|美|凤凰城|🇺🇲|(?i)us|(?i)states|(?i)america))"}
-  - {name: 🇺🇲 美国倍率, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(美国|美|凤凰城|🇺🇲|(?i)us|(?i)states|(?i)america)(?=.*倍率))"}
+  - {name: 🇺🇲 美国倍率, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(美国|美|凤凰城|🇺🇲|🇺🇲|us|america|states).*0.0?1"}
   - {name: ❓ 其他节点, type: select, include-all: true, tolerance: 20, interval: 300, filter: "^(?!.*(香港|港|🇭🇰|hk|hong|台湾|湾|🇹🇼|taiwan|tw|日本|日|东京|🇯🇵|jp|japan|韩国|韩|🇰🇷|kr|korea|美国|美|凤凰城|🇺🇲|us|states|america|剩余|套餐|官网|建议|直连)).*"}
   - {name: 🤖 OPEN AI, type: select, url: https://chat.openai.com/cdn-cgi/trace, interval: 300, tolerance: 20,  proxies: [🇯🇵 日本自动, 🇰🇷 韩国自动, 🇺🇲 美国自动]}
   - {name: 🎵 TikTok, type: select, proxies: [🇯🇵 日本自动, 🇰🇷 韩国自动, 🇺🇲 美国自动, 🇺🇲 美国倍率, 🇯🇵 日本倍率, 🇭🇰 香港倍率]}
+  - {name: 📺 bilibili, type: select, proxies: [🟢 直连, 🇭🇰 香港倍率, 🇭🇰 香港自动, 🇹🇼 台湾自动]}
   - {name: ▶️ YouTube, type: select, proxies: [🇯🇵 日本自动, 🇰🇷 韩国自动, 🇺🇲 美国自动, 🇺🇲 美国倍率, 🇯🇵 日本倍率, 🇭🇰 香港倍率]}
+  - {name: 🔍 google, type: select, proxies: [🇯🇵 日本自动, 🇰🇷 韩国自动, 🇺🇲 美国自动, 🇺🇲 美国倍率, 🇯🇵 日本倍率, 🇭🇰 香港倍率]}
+  - {name: ✈️ Telegram, type: select, proxies: [🇯🇵 日本自动, 🇰🇷 韩国自动, 🇺🇲 美国自动, 🇺🇲 美国倍率, 🇯🇵 日本倍率, 🇭🇰 香港倍率]}
   - {name: 🐦 Twitter, type: select, proxies: [🇯🇵 日本自动, 🇰🇷 韩国自动, 🇺🇲 美国自动, 🇺🇲 美国倍率, 🇯🇵 日本倍率, 🇭🇰 香港倍率]}
   - {name: 🅾 Instagram, type: select, proxies: [🇯🇵 日本自动, 🇰🇷 韩国自动, 🇺🇲 美国自动, 🇺🇲 美国倍率, 🇯🇵 日本倍率, 🇭🇰 香港倍率]}
+  - {name: 🎮 Steam, type: select, proxies: [🇭🇰 香港自动, 🇹🇼 台湾自动, 🇯🇵 日本自动, 🇰🇷 韩国自动, 🇺🇲 美国自动]}
   - {name: 🪟 Microsoft, type: select, proxies: [🇺🇲 美国自动, 🇯🇵 日本自动, 🇰🇷 韩国自动, 🟢 直连]}
   - {name: 🍏 Apple, type: select, proxies: [🟢 直连, 🚀 节点选择]}
-  - {name: 🐠 漏网之鱼, type: select, proxies: [🟢 直连, 🚀 节点选择]} 
+  - {name: 🐠 漏网之鱼, type: select, proxies: [🟢 直连, 🚀 节点选择, 🇺🇲 美国倍率, 🇯🇵 日本倍率, 🇭🇰 香港倍率]} 
  
 
 rules:
@@ -146,11 +150,13 @@ rules:
   - RULE-SET,openai_domain,🤖 OPEN AI
   - RULE-SET,my-ai,🤖 OPEN AI
   - RULE-SET,tiktok_domain,🎵 TikTok
+  - RULE-SET,bilibili_domain,📺 bilibili
+  - RULE-SET,steam_domain,🎮 Steam
   - RULE-SET,youtube_domain,▶️ YouTube
   - RULE-SET,twitter_domain,🐦 Twitter
-  - RULE-SET,telegram_domain,▶️ YouTube
-  - RULE-SET,telegram_ip,▶️ YouTube, no-resolve
-  - RULE-SET,google_domain,🚀 节点选择
+  - RULE-SET,telegram_domain,✈️ Telegram
+  - RULE-SET,telegram_ip,✈️ Telegram, no-resolve
+  - RULE-SET,google_domain,🔍 google
   - RULE-SET,github_domain,🚀 节点选择
   - RULE-SET,microsoft_domain,🪟 Microsoft
   - RULE-SET,instagram_domain,🅾 Instagram
@@ -221,6 +227,22 @@ rule-providers:
     format: mrs
     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/twitter.mrs
     path: ./ruleset/twitter_domain.mrs
+    interval: 86400
+
+  bilibili_domain:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/bilibili.mrs
+    path: ./ruleset/bilibili_domain.mrs
+    interval: 86400
+
+  steam_domain:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/steam.mrs
+    path: ./ruleset/steam_domain.mrs
     interval: 86400
 
   openai_domain:
