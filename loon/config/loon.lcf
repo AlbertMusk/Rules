@@ -11,7 +11,6 @@
 # Loon官方教程: https://coffee-elderberry-22b.notion.site/Loon-71747252d5054551a8cd10924064899c
 # Loon第三方知识库：https://getupnote.com/share/notes/zSn1ShBmzNYISKcTgjXE5oHMrNf2/b6047d8b-621c-44af-bfa6-a28d35bcf928
 # 参考链接: https://kelee.one/Tool/Loon/Lcf/zh-CN/Loon_Auto_Select_Config_By_iKeLee.lcf
-# 在原作者基础上进行个性化修改
 
 [General]
 # IP查询模式
@@ -143,6 +142,8 @@ https://loon.103516.xyz/Rule/MyBlockAds.lsr, policy=REJECT, tag=MyBlockAds, enab
 https://loon.103516.xyz/Rule/AWAvenueAdsRule.lsr, policy=REJECT, tag=AWAvenueAdsRule, enabled=true
 https://loon.103516.xyz/Rule/RejectAd.lsr, policy=REJECT, tag=RejectAd, enabled=true
 https://loon.103516.xyz/Rule/AdRules.lsr, policy=REJECT, tag=AdRules, enabled=true
+https://raw.githubusercontent.com/AlbertMusk/Rules/refs/heads/main/clash/Direct.list, policy=DIRECT, tag=MyDirect, enabled=true
+https://raw.githubusercontent.com/AlbertMusk/Rules/refs/heads/main/clash/ProxyLite.list, policy=手动选择, tag=MyProxyLite, enabled=true
 https://loon.103516.xyz/Rule/Media-Direct.lsr, policy=DIRECT, tag=Media-Direct, enabled=true
 https://loon.103516.xyz/Rule/Apple.lsr, policy=DIRECT, tag=Apple, enabled=true
 https://loon.103516.xyz/Rule/Media-Proxy.lsr, policy=Streaming, tag=Media-Proxy, enabled=true
