@@ -58,9 +58,9 @@ proxy-test-url = http://latency-test.skk.moe/endpoint
 # 资源解析器
 resource-parser = https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-parser.loon.min.js
 # GeoIP数据库
-geoip-url = https://loon.103516.xyz/GeoData/Country-Masaiki.mmdb
+geoip-url = https://geodata.kelee.one/Country-Masaiki.mmdb
 # ASN数据库
-ipasn-url = https://loon.103516.xyz/GeoData/GeoLite2-ASN-P3TERX.mmdb
+ipasn-url = https://geodata.kelee.one/GeoLite2-ASN-P3TERX.mmdb
 # 绕过代理
 skip-proxy = 192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,localhost,*.local,e.crashlynatics.com
 # 绕过路由
