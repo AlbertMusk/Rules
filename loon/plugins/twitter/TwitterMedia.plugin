@@ -9,7 +9,7 @@
 enable = true
 
 [Mitm]
-hostname = twitter.com, mobile.twitter.com
+hostname = twitter.com, mobile.twitter.com, x.com
 
 [Rewrite]
-^https:\/\/twitter\.com\/i\/api\/graphql\/.+\/TweetDetail.*$ url script-response-body twitter_media_web.js
+^https:\/\/x\.com\/i\/api\/graphql\/.+\/TweetDetail.*$ url script-response-body twitter_media_web.js
