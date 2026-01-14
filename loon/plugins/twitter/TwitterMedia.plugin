@@ -2,7 +2,7 @@
 #!desc=解析 Twitter/X 推文视频与图片，提供下载选择页（Safari）
 #!author=your-name
 #!version=1.1.0
-#!homepage=https://github.com/yourname/loon-twitter-media-downloader
+#!homepage=https://github.com/AlbertMusk/Configs/tree/main/loon/plugins/twitter
 #!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png
 
 [Plugin]
